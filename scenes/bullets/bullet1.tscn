@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://4vj86tsv1mtj"]
+
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_n10n0"]
+[ext_resource type="Texture2D" uid="uid://0jxh67sw6ro3" path="res://assets/Fighter/Charge_1.png" id="2_a5we0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojlmb"]
+size = Vector2(26, 9)
+
+[node name="Bullet" type="Area2D" groups=["bullets"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_n10n0")
+speed = 2000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ojlmb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2.5)
+texture = ExtResource("2_a5we0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 2.5)
+texture = ExtResource("2_a5we0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
